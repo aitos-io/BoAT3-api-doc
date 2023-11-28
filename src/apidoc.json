@@ -3,14 +3,17 @@
   "version": "0.0.1",
   "description": "BoAt3 文档",
   "title": "BoAt3 文档",
-  "url" : "https://dev.api.joy-notary.molian.technology",
-  "sampleUrl": "https://apidoc.free.beeceptor.com",
+  "url" : "https://dev.boat3.aitos.io",
+  "sampleUrl": "https://dev.boat3.aitos.io",
   "output": "/tmp/apidoc-output",
   "input": [
     "example"
   ],
   "order": [
-    "Oauth2",
+    "Account",
+    "Connector",
+    "Routing",
+    "Device"
   ],
   "header": {
     "title": "使用说明",
