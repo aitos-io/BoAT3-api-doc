@@ -213,3 +213,51 @@ function connectorInfo () { }
  * }
  */
 function connectorExec () { }
+
+
+/**
+ * @api {post} /v1 connector 设置vm环境变量
+ * @apiVersion 0.0.1
+ * @apiName 设置vm环境变量
+ * @apiGroup Connector
+ *
+ * @apiDescription 设置vm环境变量，
+ *
+ * @apiHeader {String} Authorization Access token
+ * @apiHeaderExample {Header} Header-Example
+ * "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOiI2NTY1NWFiMzVjN2QxNWQzZjg2YmI3Y2IiLCJpYXQiOjE3MDExNDExNzEsImV4cCI6MTcwMTE0NDc3MX0.BrgkMHC7v6ThOR9-kF-KUpOU9vwSTN6lPie-aMyw3T8"
+ *
+ * @apiBody {String} jsonrpc               2.0
+ * @apiBody {String} id           id
+ * @apiBody {String} method        接口标识,值为“boat3_connector_env”
+ * @apiBody {Object} params        参数
+ * @apiBody {String} params.connectorId        connectorId
+ * @apiBody {Array} params.vmEnvs        proof
+ * @apiBody {String} params.vmEnvs.name  环境变量名称
+ * @apiBody {String} params.proof.value        环境变量值
+ * @apiParamExample {json} Request-Example:
+ * {
+ *     "jsonrpc": "2.0",
+ *     "id": "11",
+ *     "method": "boat3_connector_env",
+ *     "params": {
+ *         "connectorId":"655c751f4fe4a49fbe289572",
+ *         "vmEnvs":[
+ *             {"name":"dbKey","value":"VTc5KHn0Ec4tmD5L40ebElejlRZUeT8K1nQAUZXe2PEeIRlGYPF550d5zt0kGsSv"},
+ *             {"name":"dd","value":"tttt"}
+ *         ]
+ *     }
+ * }
+ *
+ * @apiSuccess {String} id                id
+ * @apiSuccess {String} jsonrpc                 2.0
+ * @apiSuccess {Array} [result]                返回结果
+ * @apiSuccess {Object} result                connector
+ * @apiSuccessExample {json} Success
+ * {
+ *     "id": "11",
+ *     "jsonrpc": "2.0",
+ *     "result":""
+ * }
+ */
+function updateEnvironmentVariables () { }
