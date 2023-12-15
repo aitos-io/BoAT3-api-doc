@@ -137,6 +137,10 @@ function connectorUpload () { }
  * @apiSuccess {String} result.endpoints.https          设备使用https访问的url地址
  * @apiSuccess {String} result.endpoints.mqtt           设备使用mqtt访问的地址
  * @apiSuccess {String} result.endpoints.mqttTopic      设备使用mqtt访问的topic
+ * @apiSuccess {Array} result.vmEnvs        环境变量
+ * @apiSuccess {String} result.vmEnvs.name  环境变量名称
+ * @apiSuccess {String} result.proof.value        环境变量值
+ * @apiSuccess {String} result.proof.envType      "system"：系统内置的，"custom": 用户自定义的
  * @apiSuccess {String} result.createTime       connector 创建的时间，单位毫秒
  * @apiSuccessExample {json} Success
  * {
@@ -229,12 +233,13 @@ function connectorExec () { }
  *
  * @apiBody {String} jsonrpc               2.0
  * @apiBody {String} id           id
- * @apiBody {String} method        接口标识,值为“boat3_connector_env”
+ * @apiBody {String} method        接口标识,值为“boat3_connector_update_env”
  * @apiBody {Object} params        参数
  * @apiBody {String} params.connectorId        connectorId
- * @apiBody {Array} params.vmEnvs        proof
+ * @apiBody {Array} params.vmEnvs        环境变量
  * @apiBody {String} params.vmEnvs.name  环境变量名称
  * @apiBody {String} params.proof.value        环境变量值
+ * @apiBody {String} params.proof.envType      "system"：系统内置的，"custom": 用户自定义的
  * @apiParamExample {json} Request-Example:
  * {
  *     "jsonrpc": "2.0",
@@ -243,8 +248,8 @@ function connectorExec () { }
  *     "params": {
  *         "connectorId":"655c751f4fe4a49fbe289572",
  *         "vmEnvs":[
- *             {"name":"dbKey","value":"VTc5KHn0Ec4tmD5L40ebElejlRZUeT8K1nQAUZXe2PEeIRlGYPF550d5zt0kGsSv"},
- *             {"name":"dd","value":"tttt"}
+ *             {"name":"dbKey","value":"VTc5KHn0Ec4tmD5L40ebElejlRZUeT8K1nQAUZXe2PEeIRlGYPF550d5zt0kGsSv","envType": "system"},
+ *             {"name":"dd","value":"tttt","envType": "system"}
  *         ]
  *     }
  * }
