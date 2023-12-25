@@ -139,22 +139,51 @@ function connectorUpload () { }
  * @apiSuccess {String} result.endpoints.mqttTopic      设备使用mqtt访问的topic
  * @apiSuccess {Array} result.vmEnvs        环境变量
  * @apiSuccess {String} result.vmEnvs.name  环境变量名称
- * @apiSuccess {String} result.proof.value        环境变量值
- * @apiSuccess {String} result.proof.envType      "system"：系统内置的，"custom": 用户自定义的
+ * @apiSuccess {String} result.vmEnvs.value        环境变量值
+ * @apiSuccess {String} result.vmEnvs.envType      "system"：系统内置的，"custom": 用户自定义的
  * @apiSuccess {String} result.createTime       connector 创建的时间，单位毫秒
  * @apiSuccessExample {json} Success
  * {
  *     "id": "11",
  *     "jsonrpc": "2.0",
  *     "result": {
- *         "id": "656567e85c7d15d3f86bb7cf",
- *         "operatorAddress": "0x9D10126E0eF3C49887b150a3760ecFf0585fc62d",
- *         "createTime": 1701144552416,
+ *         "id": "657c1f079dc6a28c6bf997dd",
+ *         "accountId": "65541d697bb21f75bbfd47fd",
+ *         "name": "ttttt1111",
+ *         "operatorAddress": "0xF74Fe9e10873cbA8a98B1D4d25531eEbF50EEcb9",
  *         "endpoints": {
- *             "https": "https://dev.boat3.aitos.io/iot/report/65655ab35c7d15d3f86bb7cb/656567e85c7d15d3f86bb7cf",
+ *             "https": "https://dev.boat3.aitos.io/iot/report/65541d697bb21f75bbfd47fd/657c1f079dc6a28c6bf997dd",
  *             "mqtt": "mqtt://dev.boat3.aitos.io:1883",
- *             "mqttTopic": "boat3:device:report:65655ab35c7d15d3f86bb7cb:656567e85c7d15d3f86bb7cf"
- *         }
+ *             "mqttTopic": "boat3:device:report:65541d697bb21f75bbfd47fd:657c1f079dc6a28c6bf997dd"
+ *         },
+ *         "vmEnvs": [
+ *             {
+ *                 "name": "db_api_key",
+ *                 "value": "7YnUMUqSOPIHkAGTLXjNc****63jTbFwBJXg0zrg6EspzvawxYqInaG",
+ *                 "envType": "system"
+ *             },
+ *             {
+ *                 "name": "db_name",
+ *                 "value": "db_657c1f079dc6a28c6bf997dd",
+ *                 "envType": "system"
+ *             },
+ *             {
+ *                 "name": "db_dataSource",
+ *                 "value": "boat3-dev",
+ *                 "envType": "system"
+ *             },
+ *             {
+ *                 "name": "db_collection",
+ *                 "value": "device_data",
+ *                 "envType": "system"
+ *             },
+ *             {
+ *                 "name": "db_endpoint",
+ *                 "value": "https://ap-southeast-1.aws.data.mongodb-api.com/app/data-jwxoa/endpoint/data/v1/action",
+ *                 "envType": "system"
+ *             }
+ *         ],
+ *         "createTime": 1702633223117
  *     }
  * }
  */
@@ -242,46 +271,15 @@ function connectorExec () { }
  * @apiBody {String} params.vmEnvs.envType      "system"：系统内置的，"custom": 用户自定义的
  * @apiParamExample {json} Request-Example:
  * {
- *     "id": "11",
  *     "jsonrpc": "2.0",
- *     "result": {
- *         "id": "657c1f079dc6a28c6bf997dd",
- *         "accountId": "65541d697bb21f75bbfd47fd",
- *         "name": "ttttt1111",
- *         "operatorAddress": "0xF74Fe9e10873cbA8a98B1D4d25531eEbF50EEcb9",
- *         "endpoints": {
- *             "https": "https://dev.boat3.aitos.io/iot/report/65541d697bb21f75bbfd47fd/657c1f079dc6a28c6bf997dd",
- *             "mqtt": "mqtt://dev.boat3.aitos.io:1883",
- *             "mqttTopic": "boat3:device:report:65541d697bb21f75bbfd47fd:657c1f079dc6a28c6bf997dd"
- *         },
- *         "vmEnvs": [
- *             {
- *                 "name": "db_api_key",
- *                 "value": "7YnUMUqSOPIHkAGTLXjNceSb******3jTbFwBJXg0zrg6EspzvawxYqInaG",
- *                 "envType": "system"
- *             },
- *             {
- *                 "name": "db_name",
- *                 "value": "db_657c1f079dc6a28c6bf997dd",
- *                 "envType": "system"
- *             },
- *             {
- *                 "name": "db_dataSource",
- *                 "value": "boat3-dev",
- *                 "envType": "system"
- *             },
- *             {
- *                 "name": "db_collection",
- *                 "value": "device_data",
- *                 "envType": "system"
- *             },
- *             {
- *                 "name": "db_endpoint",
- *                 "value": "https://ap-southeast-1.aws.data.mongodb-api.com/app/data-jwxoa/endpoint/data/v1/action",
- *                 "envType": "system"
- *             }
- *         ],
- *         "createTime": 1702633223117
+ *     "id": "11",
+ *     "method": "boat3_connector_env",
+ *     "params": {
+ *         "connectorId":"655c751f4fe4a49fbe289572",
+ *         "vmEnvs":[
+ *             {"name":"dbKey","value":"VTc5KHn0Ec4tmD5L40ebElejlRZUeT8K1nQAUZXe2PEeIRlGYPF550d5zt0kGsSv","envType": "system"},
+ *             {"name":"dd","value":"tttt","envType": "system"}
+ *         ]
  *     }
  * }
  *
