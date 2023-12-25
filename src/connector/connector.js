@@ -238,8 +238,8 @@ function connectorExec () { }
  * @apiBody {String} params.connectorId        connectorId
  * @apiBody {Array} params.vmEnvs        环境变量
  * @apiBody {String} params.vmEnvs.name  环境变量名称
- * @apiBody {String} params.proof.value        环境变量值
- * @apiBody {String} params.proof.envType      "system"：系统内置的，"custom": 用户自定义的
+ * @apiBody {String} params.vmEnvs.value        环境变量值
+ * @apiBody {String} params.vmEnvs.envType      "system"：系统内置的，"custom": 用户自定义的
  * @apiParamExample {json} Request-Example:
  * {
  *     "jsonrpc": "2.0",
