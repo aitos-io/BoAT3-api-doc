@@ -29,6 +29,8 @@
  * @apiSuccess {String} result.operatorAddress                operatorAddress
  * @apiSuccess {Object} result.config                配置信息
  * @apiSuccess {number} result.config.chainId                chainId
+ * @apiSuccess {String} result.config.templates                templates
+ * @apiSuccess {String} result.config.contracts                contracts
  * @apiSuccess {String} result.createTime       connector 创建的时间，单位毫秒
  * @apiSuccessExample {json} Success
  * {
@@ -42,7 +44,9 @@
  *         "description": "description",
  *         "operatorAddress": "0xF74Fe9e10873cbA8a98B1D4d25531eEbF50EEcb9",
  *         "config":{
- *             "chainId":1
+ *             "chainId":1,
+ *             "templates":"",
+ *             "contracts":"",
  *         },
  *         "createTime": 1702633223117
  *     }
@@ -84,6 +88,8 @@ function connectorlist () { }
  * @apiSuccess {String} result.operatorAddress                operatorAddress
  * @apiSuccess {Object} result.config                配置信息
  * @apiSuccess {number} result.config.chainId                chainId
+ * @apiSuccess {String} result.config.templates                templates
+ * @apiSuccess {String} result.config.contracts                contracts
  * @apiSuccess {String} result.createTime       connector 创建的时间，单位毫秒
  * @apiSuccessExample {json} Success
  * {
@@ -96,7 +102,9 @@ function connectorlist () { }
  *         "description": "description",
  *         "operatorAddress": "0xF74Fe9e10873cbA8a98B1D4d25531eEbF50EEcb9",
  *         "config":{
- *             "chainId":1
+ *             "chainId":1,
+ *             "templates":"",
+ *             "contracts":"",
  *         },
  *         "createTime": 1702633223117
  *     }
