@@ -15,13 +15,15 @@
  * @apiBody {String} method        接口标识,值为“boat3_connector_register”
  * @apiBody {Object} params        参数
  * @apiBody {number} params.name       connector name
+ * @apiBody {number} [params.description]      描述
  * @apiParamExample {json} Request-Example:
  * {
  *     "jsonrpc": "2.0",
  *     "id": "11",
  *     "method": "boat3_connector_register",
  *     "params": {
- *         "name":"test243eee"
+ *         "name":"test243eee",
+ *         "description":"test"
  *     }
  * }
  *
@@ -100,6 +102,59 @@ function connectorRegister () { }
 function connectorUpload () { }
 
 
+/**
+ * @api {post} /v1 查询登录用户下的 connector 列表
+ * @apiVersion 0.0.1
+ * @apiName 查询登录用户下的 connector 列表
+ * @apiGroup Connector
+ *
+ * @apiDescription 查询登录用户下的 connector 列表，
+ *
+ * @apiHeader {String} Authorization Access token
+ * @apiHeaderExample {Header} Header-Example
+ * "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOiI2NTY1NWFiMzVjN2QxNWQzZjg2YmI3Y2IiLCJpYXQiOjE3MDExNDExNzEsImV4cCI6MTcwMTE0NDc3MX0.BrgkMHC7v6ThOR9-kF-KUpOU9vwSTN6lPie-aMyw3T8"
+ *
+ * @apiBody {String} jsonrpc               2.0
+ * @apiBody {String} id           id
+ * @apiBody {String} method        接口标识,值为“boat3_connector_list”
+ * @apiBody {Object} params        参数
+ * @apiParamExample {json} Request-Example:
+ * {
+ *     "jsonrpc": "2.0",
+ *     "id": "11",
+ *     "method": "boat3_connector_info",
+ *     "params": {
+ *     }
+ * }
+ *
+ * @apiSuccess {String} id                id
+ * @apiSuccess {String} jsonrpc                 2.0
+ * @apiSuccess {Object} [result]                返回结果
+ * @apiSuccess {String} result.id                connectorId
+ * @apiSuccess {String} result.name                name
+ * @apiSuccess {String} result.description                description
+ * @apiSuccess {String} result.operatorAddress                operatorAddress
+ * @apiSuccess {String} result.fileHash                fileHash
+ * @apiSuccess {String} result.createTime       connector 创建的时间，单位毫秒
+ * @apiSuccessExample {json} Success
+ * {
+ *     "id": "11",
+ *     "jsonrpc": "2.0",
+ *     "result": [
+ *     {
+ *         "id": "657c1f079dc6a28c6bf997dd",
+ *         "accountId": "65541d697bb21f75bbfd47fd",
+ *         "name": "ttttt1111",
+ *         "description": "ttttt1111",
+ *         "operatorAddress": "0xF74Fe9e10873cbA8a98B1D4d25531eEbF50EEcb9",
+ *         "fileHash": "",
+ *         "createTime": 1702633223117
+ *     }
+ *     ]
+ * }
+ */
+function connectorlist () { }
+
 
 /**
  * @api {post} /v1 查询connector 信息
@@ -132,6 +187,8 @@ function connectorUpload () { }
  * @apiSuccess {String} jsonrpc                 2.0
  * @apiSuccess {Object} [result]                返回结果
  * @apiSuccess {String} result.id                connectorId
+ * @apiSuccess {String} result.name                name
+ * @apiSuccess {String} result.description                description
  * @apiSuccess {String} result.operatorAddress                operatorAddress
  * @apiSuccess {Object} result.endpoints                endpoints
  * @apiSuccess {String} result.endpoints.https          设备使用https访问的url地址
@@ -150,6 +207,7 @@ function connectorUpload () { }
  *         "id": "657c1f079dc6a28c6bf997dd",
  *         "accountId": "65541d697bb21f75bbfd47fd",
  *         "name": "ttttt1111",
+ *         "description": "ttttt1111",
  *         "operatorAddress": "0xF74Fe9e10873cbA8a98B1D4d25531eEbF50EEcb9",
  *         "endpoints": {
  *             "https": "https://dev.boat3.aitos.io/iot/report/65541d697bb21f75bbfd47fd/657c1f079dc6a28c6bf997dd",
@@ -247,6 +305,48 @@ function connectorInfo () { }
  */
 function connectorExec () { }
 
+
+/**
+ * @api {post} /v1 connector 更新connector信息
+ * @apiVersion 0.0.1
+ * @apiName 更新connector信息
+ * @apiGroup Connector
+ *
+ * @apiDescription 更新connector信息，
+ *
+ * @apiHeader {String} Authorization Access token
+ * @apiHeaderExample {Header} Header-Example
+ * "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOiI2NTY1NWFiMzVjN2QxNWQzZjg2YmI3Y2IiLCJpYXQiOjE3MDExNDExNzEsImV4cCI6MTcwMTE0NDc3MX0.BrgkMHC7v6ThOR9-kF-KUpOU9vwSTN6lPie-aMyw3T8"
+ *
+ * @apiBody {String} jsonrpc               2.0
+ * @apiBody {String} id           id
+ * @apiBody {String} method        接口标识,值为“boat3_connector_update”
+ * @apiBody {Object} params        参数
+ * @apiBody {String} [params.name]        name
+ * @apiBody {Array} [params.description]        description
+ * @apiParamExample {json} Request-Example:
+ * {
+ *     "jsonrpc": "2.0",
+ *     "id": "11",
+ *     "method": "boat3_connector_env",
+ *     "params": {
+ *         "connectorId":"655c751f4fe4a49fbe289572",
+ *         "name":"test"
+ *     }
+ * }
+ *
+ * @apiSuccess {String} id                id
+ * @apiSuccess {String} jsonrpc                 2.0
+ * @apiSuccess {Array} [result]                返回结果
+ * @apiSuccess {Object} result                connector
+ * @apiSuccessExample {json} Success
+ * {
+ *     "id": "11",
+ *     "jsonrpc": "2.0",
+ *     "result":""
+ * }
+ */
+function update () { }
 
 /**
  * @api {post} /v1 connector 设置vm环境变量
