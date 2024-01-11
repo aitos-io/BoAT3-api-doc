@@ -10,13 +10,16 @@
  * @apiBody {String} id           id
  * @apiBody {String} method        接口标识,值为“boat3_pub_connector_list”
  * @apiBody {Object} params        参数
- * @apiBody {String} params.connectorId        connectorId
+ * @apiBody {number} params.limit        每页记录数，默认10
+ * @apiBody {number} params.skip        跳过多少条记录，默认0，计算公式(pageNo-1)*limit,pageNo 为第几页
  * @apiParamExample {json} Request-Example:
  * {
  *     "jsonrpc": "2.0",
  *     "id": "11",
  *     "method": "boat3_pub_connector_list",
  *     "params": {
+ *          "limit":10,
+ *          "skip":0
  *     }
  * }
  *
