@@ -1,14 +1,14 @@
 /**
- * @api {post} /v1 查询connector 信息
+ * @api {post} /v1 查询公开connector 列表
  * @apiVersion 0.0.1
- * @apiName 查询connector 信息
+ * @apiName 查询公开connector 列表
  * @apiGroup Public
  *
- * @apiDescription 查询connector 信息，
+ * @apiDescription 查询公开connector 列表
  *
  * @apiBody {String} jsonrpc               2.0
  * @apiBody {String} id           id
- * @apiBody {String} method        接口标识,值为“boat3_pub_connector_info”
+ * @apiBody {String} method        接口标识,值为“boat3_pub_connector_list”
  * @apiBody {Object} params        参数
  * @apiBody {String} params.connectorId        connectorId
  * @apiParamExample {json} Request-Example:
@@ -27,19 +27,26 @@
  * @apiSuccess {String} result.name                name
  * @apiSuccess {String} result.description                description
  * @apiSuccess {String} result.operatorAddress                operatorAddress
+ * @apiSuccess {Object} result.config                配置信息
+ * @apiSuccess {number} result.config.chainId                chainId
  * @apiSuccess {String} result.createTime       connector 创建的时间，单位毫秒
  * @apiSuccessExample {json} Success
  * {
  *     "id": "11",
  *     "jsonrpc": "2.0",
- *     "result": {
+ *     "result": [
+ *     {
  *         "id": "657c1f079dc6a28c6bf997dd",
  *         "accountId": "65541d697bb21f75bbfd47fd",
  *         "name": "ttttt1111",
  *         "description": "description",
  *         "operatorAddress": "0xF74Fe9e10873cbA8a98B1D4d25531eEbF50EEcb9",
+ *         "config":{
+ *             "chainId":1
+ *         },
  *         "createTime": 1702633223117
  *     }
+ *     ]
  * }
  */
 function connectorlist () { }
@@ -75,6 +82,8 @@ function connectorlist () { }
  * @apiSuccess {String} result.name                name
  * @apiSuccess {String} result.description                description
  * @apiSuccess {String} result.operatorAddress                operatorAddress
+ * @apiSuccess {Object} result.config                配置信息
+ * @apiSuccess {number} result.config.chainId                chainId
  * @apiSuccess {String} result.createTime       connector 创建的时间，单位毫秒
  * @apiSuccessExample {json} Success
  * {
@@ -86,6 +95,9 @@ function connectorlist () { }
  *         "name": "ttttt1111",
  *         "description": "description",
  *         "operatorAddress": "0xF74Fe9e10873cbA8a98B1D4d25531eEbF50EEcb9",
+ *         "config":{
+ *             "chainId":1
+ *         },
  *         "createTime": 1702633223117
  *     }
  * }
