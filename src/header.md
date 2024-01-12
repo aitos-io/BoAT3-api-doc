@@ -1,5 +1,6 @@
 # 使用说明
 
+#### https使用方式
 调用api接口需要先使用 “获取access token” 或 “根据refreshToken刷新access token” 接口来获取 access token，在header中增加 "Authorization"，值为"Bearer "+accessToken，即可访问接口
 
 其中"设备上报数据"接口需要device access token来访问。
@@ -104,4 +105,13 @@ export class DeviceReportDto {
 
 
 ```
+
+#### mqtt使用方式
+
+1. topic 格式
+   boat3/device/report/{accountId}/{connectorId}
+2. mqtt clientId 格式
+   {connectorId}_{任意字符}
+3. 必须使用用户名和access token来登录
+4. 传入的报文格式，和https方式一样使用json，只需要传入jsonrpc 格式里的params 部分。
 
